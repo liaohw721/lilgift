@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>little gift</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Heres a letter for you.</strong>
+                        <p>Dear Friend, I know we just met, but I’m so happy to know you!! You are such an incredible person, and I’m truly grateful to have crossed paths with you.
+                        </p>
+                        <p>
+                            Wishing you a journey filled with blessings, joy, and wonderful memories.Like always, I wish you happiness and all the best in everything you do.
+                        </p>
+                        
+                        <p>Your dear friend, Henry Liao</p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+        <div id="flowerRain"></div> <!-- Container for flower rain -->
+    </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+            startFlowerRain(); // Start flower rain on click
+        });
+
+        function startFlowerRain() {
+            const flowerRain = document.getElementById('flowerRain');
+            flowerRain.innerHTML = ''; // Clear previous flowers if any
+            const flowerImages = ["img/image.png"]; // Ensure this path is correct
+
+            for (let i = 0; i < 50; i++) {
+                const flower = document.createElement('div');
+                flower.classList.add('flower');
+                flower.style.backgroundImage = `url(${flowerImages[Math.floor(Math.random() * flowerImages.length)]})`;
+                flower.style.left = Math.random() * window.innerWidth + 'px';
+                flower.style.animationDuration = Math.random() * 3 + 2 + 's';
+                flower.style.animationDelay = Math.random() * 5 + 's'; // Add random delay
+                flowerRain.appendChild(flower);
+            }
+        }
+    </script>
+</body>
+</html>
